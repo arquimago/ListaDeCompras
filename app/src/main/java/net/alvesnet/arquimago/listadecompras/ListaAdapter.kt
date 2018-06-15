@@ -1,8 +1,6 @@
 package net.alvesnet.arquimago.listadecompras
 
-import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +8,7 @@ import android.widget.CheckBox
 import android.widget.CompoundButton
 import kotlinx.android.synthetic.main.fragment_item.view.*
 
-class ListaAdapter(private val itens: List<ItemDaLista>, val contexto: Context?) : RecyclerView.Adapter<ListaAdapter.ItemHolder>() {
+class ListaAdapter(private val itens: List<ItemDaLista>) : RecyclerView.Adapter<ListaAdapter.ItemHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
@@ -25,9 +23,8 @@ class ListaAdapter(private val itens: List<ItemDaLista>, val contexto: Context?)
 
         with(itemHolder.view) {
             tag = item
-            this.checkBoxItem.setOnCheckedChangeListener{ compoundButton: CompoundButton,
-                                                           b: Boolean ->
-                val bd = BD(contexto!!)
+            this.checkBoxItem.setOnCheckedChangeListener { _: CompoundButton, b: Boolean ->
+                val bd = BD(context)
                 item.comprar = b
                 bd.atualizar(item)
                 bd.fechar()
