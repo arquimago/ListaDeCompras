@@ -3,6 +3,7 @@ package net.alvesnet.arquimago.listadecompras
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import android.util.Log
 
 class BD (context: Context){
 
@@ -24,8 +25,9 @@ class BD (context: Context){
         valores.put("nome", item.nome)
         valores.put("categoria", item.categoria)
         valores.put("comprar", if (item.comprar) 0 else 1)
-
-        bd.update("itens", valores, "_id = ?", arrayOf("" + item.id))
+        Log.e("Valores: ", valores.toString())
+        val resultado = bd.update("itens", valores, "_id = ?", arrayOf("" + item.id))
+        Log.e("Resultado SQL: ", resultado.toString())
     }
 
 

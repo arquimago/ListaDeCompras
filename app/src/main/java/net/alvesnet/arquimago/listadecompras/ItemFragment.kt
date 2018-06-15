@@ -6,8 +6,6 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.CheckBox
-import kotlinx.android.synthetic.main.fragment_item.*
 import kotlinx.android.synthetic.main.fragment_page.view.*
 
 
@@ -39,21 +37,9 @@ class ItemFragment : Fragment() {
 
         var rv = view.RV
         rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        rv.adapter = ListaAdapter(lista, object : OnListFragmentInteractionListener {
-            //var bd = BD(activity!!)
-            val checkBox = checkBoxItem
-            //this.comprar = checkBox.isChecked()
-            //bd.atualizar(this)
-            //bd.fechar()
-        })
+        rv.adapter = ListaAdapter(lista, context)
 
         return view
-    }
-
-    interface OnListFragmentInteractionListener {
-        fun onListFragmentInteraction(item: ItemDaLista) {
-
-        }
     }
 
     override fun onSaveInstanceState(savedInstanceState: Bundle) {

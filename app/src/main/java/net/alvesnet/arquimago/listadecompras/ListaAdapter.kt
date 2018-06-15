@@ -1,24 +1,17 @@
 package net.alvesnet.arquimago.listadecompras
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import android.widget.CompoundButton
 import kotlinx.android.synthetic.main.fragment_item.view.*
 
-import net.alvesnet.arquimago.listadecompras.ItemFragment.OnListFragmentInteractionListener
+class ListaAdapter(private val itens: List<ItemDaLista>, val contexto: Context?) : RecyclerView.Adapter<ListaAdapter.ItemHolder>() {
 
-class ListaAdapter(private val itens: List<ItemDaLista>, private val mListener: OnListFragmentInteractionListener?) : RecyclerView.Adapter<ListaAdapter.ItemHolder>() {
-
-    private val mOnClickListener: View.OnClickListener
-
-    init {
-        mOnClickListener = View.OnClickListener(function = { v ->
-            val item = v.tag as ItemDaLista
-            mListener?.onListFragmentInteraction(item)
-        })
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_item, parent, false)
@@ -32,7 +25,13 @@ class ListaAdapter(private val itens: List<ItemDaLista>, private val mListener: 
 
         with(itemHolder.view) {
             tag = item
-            setOnClickListener(mOnClickListener)
+            this.checkBoxItem.setOnCheckedChangeListener{ compoundButton: CompoundButton,
+                                                           b: Boolean ->
+                val bd = BD(contexto!!)
+                item.comprar = b
+                bd.atualizar(item)
+                bd.fechar()
+            }
         }
     }
 
