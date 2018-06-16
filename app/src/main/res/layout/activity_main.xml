@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,17 +13,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        app:tabTextColor="@android:color/white"
-        app:tabSelectedTextColor="@color/textoSelecionado"
-        app:tabMode="scrollable"
+        app:layout_constraintBottom_toTopOf="@+id/viewpager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:tabGravity="center"
-        app:tabIndicatorColor="@color/abaSelecionada"/>
+        app:tabIndicatorColor="@color/abaSelecionada"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/textoSelecionado"
+        app:tabTextColor="@android:color/white" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:layout_weight="1"
-        android:background="@android:color/white" />
+        android:background="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@+id/sliding_tabs" />
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>
