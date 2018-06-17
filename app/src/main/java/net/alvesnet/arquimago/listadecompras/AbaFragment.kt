@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_page.view.*
 
+
 class AbaFragment : Fragment() {
 
     private var categoria: Int = 0
+    private var isEditing: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +32,8 @@ class AbaFragment : Fragment() {
 
         var rv = view.RV
         rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        rv.adapter = ListaAdapter(lista)
+        rv.adapter = ListaAdapter(lista, isEditing)
+
 
         return view
     }

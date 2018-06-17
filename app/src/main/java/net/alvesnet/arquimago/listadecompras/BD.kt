@@ -5,18 +5,18 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 
-class BD (context: Context){
+class BD(context: Context) {
 
     val auxBd = BDCore(context)
     var bd = auxBd.getWritableDatabase()
 
-    fun inserir(item: ItemDaLista, bd: SQLiteDatabase){
+    fun inserir(item: ItemDaLista, bd: SQLiteDatabase) {
         val valores = ContentValues()
         valores.put("nome", item.nome)
         valores.put("categoria", item.categoria)
-        valores.put("comprar", if(item.comprar) 0 else 1)
+        valores.put("comprar", if (item.comprar) 0 else 1)
 
-        val id = bd.insert("itens",null,valores)
+        val id = bd.insert("itens", null, valores)
         item.id = id
     }
 
@@ -32,7 +32,7 @@ class BD (context: Context){
 
 
     fun apagar(item: ItemDaLista) {
-        bd.delete("nome", "_id = " + item.id, null)
+        bd.delete("itens", "_id = " + item.id, null)
     }
 
     fun buscar(): List<ItemDaLista> {
@@ -49,7 +49,7 @@ class BD (context: Context){
                 i.id = cursor.getInt(0).toLong()
                 i.nome = cursor.getString(1)
                 i.categoria = cursor.getInt(2)
-                i.comprar = cursor.getInt(3)==1
+                i.comprar = cursor.getInt(3) == 1
                 lista.add(i)
 
             } while (cursor.moveToNext())
@@ -72,7 +72,7 @@ class BD (context: Context){
                 i.id = cursor.getInt(0).toLong()
                 i.nome = cursor.getString(1)
                 i.categoria = cursor.getInt(2)
-                i.comprar = cursor.getInt(3)!=1
+                i.comprar = cursor.getInt(3) != 1
                 lista.add(i)
 
             } while (cursor.moveToNext())

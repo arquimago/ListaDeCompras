@@ -11,7 +11,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        viewpager.adapter = AbasAdapter(supportFragmentManager)
+        val tabTitles = arrayOf("Temperos", "Cozinhar", "Café da Manhã", "Diversos", "Feira", "Limpeza", "Higiene", "Bebidas")
+
+        viewpager.adapter = AbasAdapter(supportFragmentManager, tabTitles)
 
         sliding_tabs.setupWithViewPager(viewpager)
     }
