@@ -34,7 +34,6 @@ class AbaFragment : Fragment() {
         rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         rv.adapter = ListaAdapter(lista, isEditing)
 
-
         return view
     }
 
