@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_page.view.*
 
-class ItemFragment : Fragment() {
+class AbaFragment : Fragment() {
 
     private var categoria: Int = 0
 
@@ -43,10 +43,10 @@ class ItemFragment : Fragment() {
     companion object {
         const val ARG_PAGE = "ARG_PAGE"
 
-        fun newInstance(page: Int): ItemFragment {
+        fun newInstance(page: Int): AbaFragment {
             val args = Bundle()
             args.putInt(ARG_PAGE, page)
-            val fragment = ItemFragment()
+            val fragment = AbaFragment()
             fragment.arguments = args
             return fragment
         }

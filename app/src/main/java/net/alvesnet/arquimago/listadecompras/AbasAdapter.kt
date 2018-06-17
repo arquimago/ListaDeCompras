@@ -8,7 +8,7 @@ class AbasAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
 
     override fun getCount() = tabTitles.size
 
-    override fun getItem(position: Int) = ItemFragment.newInstance(position)
+    override fun getItem(position: Int) = AbaFragment.newInstance(position)
 
     override fun getPageTitle(position: Int) = tabTitles[position]
 }
