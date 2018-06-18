@@ -26,7 +26,7 @@ class AbaFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_page, container, false)
 
-        val bd = BD(activity!!)
+        val bd = BD(context!!)
         val lista = bd.buscarCategoria(categoria + 1)
         bd.fechar()
 
