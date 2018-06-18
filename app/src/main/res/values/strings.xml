@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Lista de Compras</string>
     <string name="generic_item">Nome do Item</string>
+    <string name="edit_menu">Editar Listas</string>
 </resources>

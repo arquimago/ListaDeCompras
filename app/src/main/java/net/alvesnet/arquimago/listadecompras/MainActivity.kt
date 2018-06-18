@@ -1,20 +1,46 @@
 package net.alvesnet.arquimago.listadecompras
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.viewpager
-import kotlinx.android.synthetic.main.activity_main.sliding_tabs
+import android.support.v7.app.AppCompatActivity
+import android.view.Menu
+import android.view.MenuItem
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
+
+    var isEditing = false
+    val tabTitles = arrayOf("Temperos", "Cozinhar", "Café da Manhã", "Diversos", "Feira", "Limpeza", "Higiene", "Bebidas")
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val tabTitles = arrayOf("Temperos", "Cozinhar", "Café da Manhã", "Diversos", "Feira", "Limpeza", "Higiene", "Bebidas")
-
-        viewpager.adapter = AbasAdapter(supportFragmentManager, tabTitles)
+        //setSupportActionBar(my_toolbar)
+        viewpager.adapter = AbasAdapter(supportFragmentManager, tabTitles, isEditing)
 
         sliding_tabs.setupWithViewPager(viewpager)
     }
+
+    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
+         menuInflater.inflate(R.menu.menu_settings, menu)
+         return true
+     }
+
+     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+         // Handle action bar item clicks here. The action bar will
+         // automatically handle clicks on the Home/Up button, so long
+         // as you specify a parent activity in AndroidManifest.xml.
+         val id = item.itemId
+
+         if (id == R.id.action_edit_mode) {
+             isEditing = !isEditing
+
+             return true
+         }
+
+         return super.onOptionsItemSelected(item)
+     }*/
+
 }

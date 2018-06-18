@@ -11,9 +11,10 @@ import android.widget.EditText
 import android.widget.ImageButton
 import kotlinx.android.synthetic.main.fragment_item.view.*
 
+
 class ListaAdapter(private val itens: List<ItemDaLista>, private val isEdting: Boolean) : RecyclerView.Adapter<ListaAdapter.ItemHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder{
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_item, parent, false)
         return ItemHolder(view)
     }
@@ -21,7 +22,7 @@ class ListaAdapter(private val itens: List<ItemDaLista>, private val isEdting: B
     override fun onBindViewHolder(itemHolder: ItemHolder, position: Int) {
         val item = itens[position]
         itemHolder.checkBox.text = item.nome
-        if(isEdting){
+        if (isEdting) {
             itemHolder.deleteButton.visibility = View.VISIBLE
             itemHolder.editButton.visibility = View.VISIBLE
             itemHolder.checkBox.isChecked = false
@@ -50,15 +51,16 @@ class ListaAdapter(private val itens: List<ItemDaLista>, private val isEdting: B
                 editText.hint = "Novo Nome"
                 alertBuilder.setView(editText)
 
-                alertBuilder.setPositiveButton("Alterar") {_, _->
+                alertBuilder.setPositiveButton("Alterar") { _, _ ->
                     item.nome = editText.text.toString()
                     val bd = BD(context)
                     bd.atualizar(item)
                     bd.fechar()
-                    notifyDataSetChanged()
+                    notifyItemChanged(position)
+
                 }
 
-                alertBuilder.setNegativeButton("Descartar"){_, _ ->  }
+                alertBuilder.setNegativeButton("Descartar") { _, _ -> }
 
                 alertBuilder.create().show()
 
@@ -69,15 +71,17 @@ class ListaAdapter(private val itens: List<ItemDaLista>, private val isEdting: B
                 val alertBuilder = AlertDialog.Builder(context)
                 alertBuilder.setTitle("Confirmação")
                 alertBuilder.setMessage("Deseja realmente apagar " + item.nome + " da lista?")
-                alertBuilder.setPositiveButton("SIM"){ _, _->
+                alertBuilder.setPositiveButton("SIM") { _, _ ->
                     val bd = BD(context)
                     bd.apagar(item)
                     bd.fechar()
                     itens.drop(position)
                     notifyItemRemoved(position)
-                    notifyItemRangeChanged(position,itens.size)
+                    notifyItemRangeChanged(position, itemCount)
+                    notifyItemRangeRemoved(position,1)
+
                 }
-                alertBuilder.setNegativeButton("NÃO"){_, _->  }
+                alertBuilder.setNegativeButton("NÃO") { _, _ -> }
 
                 alertBuilder.create().show()
             }
@@ -95,7 +99,6 @@ class ListaAdapter(private val itens: List<ItemDaLista>, private val isEdting: B
         override fun toString(): String {
             return super.toString() + " '" + checkBox.text + "'"
         }
-
 
 
     }

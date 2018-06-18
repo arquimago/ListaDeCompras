@@ -20,6 +20,10 @@ class AbaFragment : Fragment() {
             true -> savedInstanceState!!.getInt(ARG_PAGE)
             false -> arguments?.getInt(ARG_PAGE)!!
         }
+        isEditing = when (savedInstanceState != null) {
+            true -> savedInstanceState!!.getBoolean(IS_EDITING)
+            false -> arguments?.getBoolean(IS_EDITING)!!
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -44,15 +48,16 @@ class AbaFragment : Fragment() {
 
     companion object {
         const val ARG_PAGE = "ARG_PAGE"
+        const val IS_EDITING = "IS_EDITING"
 
-        fun newInstance(page: Int): AbaFragment {
+        fun newInstance(page: Int, isEditing: Boolean): AbaFragment {
             val args = Bundle()
             args.putInt(ARG_PAGE, page)
+            args.putBoolean(IS_EDITING, isEditing)
             val fragment = AbaFragment()
             fragment.arguments = args
             return fragment
         }
     }
-
 
 }
