@@ -33,8 +33,8 @@ class BD(context: Context) {
         bd.delete("itens", "_id = " + item.id, null)
     }
 
-    fun buscar(): List<ItemDaLista> {
-        val lista = ArrayList<ItemDaLista>()
+    fun buscar(): MutableList<ItemDaLista> {
+        val lista: MutableList<ItemDaLista> = arrayListOf()
         val colunas = arrayOf("_id", "nome", "categoria", "comprar")
 
         val cursor = bd.query("itens", colunas, null, null, null, null, "categoria ASC")
@@ -56,8 +56,8 @@ class BD(context: Context) {
         return lista
     }
 
-    fun buscarCategoria(categoria: Int): List<ItemDaLista> {
-        val lista = ArrayList<ItemDaLista>()
+    fun buscarCategoria(categoria: Int): MutableList<ItemDaLista> {
+        val lista : MutableList<ItemDaLista> = arrayListOf()
         val colunas = arrayOf("_id", "nome", "categoria", "comprar")
 
         val cursor = bd.query("itens", colunas, "categoria =$categoria", null, null, null, "nome ASC")

@@ -12,7 +12,7 @@ import android.widget.ImageButton
 import kotlinx.android.synthetic.main.fragment_item.view.*
 
 
-class ListaAdapter(private val itens: List<ItemDaLista>, private val isEdting: Boolean) : RecyclerView.Adapter<ListaAdapter.ItemHolder>() {
+class ListaAdapter(private val itens: MutableList<ItemDaLista>, private val isEdting: Boolean) : RecyclerView.Adapter<ListaAdapter.ItemHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_item, parent, false)
@@ -57,7 +57,6 @@ class ListaAdapter(private val itens: List<ItemDaLista>, private val isEdting: B
                     bd.atualizar(item)
                     bd.fechar()
                     notifyItemChanged(position)
-
                 }
 
                 alertBuilder.setNegativeButton("Descartar") { _, _ -> }
@@ -75,10 +74,10 @@ class ListaAdapter(private val itens: List<ItemDaLista>, private val isEdting: B
                     val bd = BD(context)
                     bd.apagar(item)
                     bd.fechar()
-                    itens.drop(position)
+                    itens.removeAt(position)
                     notifyItemRemoved(position)
                     notifyItemRangeChanged(position, itemCount)
-                    notifyItemRangeRemoved(position,1)
+                    //notifyItemRangeRemoved(position,1)
 
                 }
                 alertBuilder.setNegativeButton("NÃO") { _, _ -> }
