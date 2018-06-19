@@ -79,6 +79,29 @@ class BD(context: Context) {
         return lista
     }
 
+    fun paraComprar(): MutableList<ItemDaLista> {
+        val lista : MutableList<ItemDaLista> = arrayListOf()
+        val colunas = arrayOf("_id", "nome", "categoria", "comprar")
+
+        val cursor = bd.query("itens", colunas, "comprar=1", null, null, null, "nome ASC")
+
+        if (cursor.count > 0) {
+            cursor.moveToFirst()
+
+            do {
+                val i = ItemDaLista()
+                i.id = cursor.getInt(0).toLong()
+                i.nome = cursor.getString(1)
+                i.categoria = cursor.getInt(2)
+                i.comprar = cursor.getInt(3) != 1
+                lista.add(i)
+
+            } while (cursor.moveToNext())
+        }
+
+        return lista
+    }
+
     fun fechar() {
         bd.close()
     }
