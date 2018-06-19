@@ -4,11 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
-    <item
+    <!--<item
         android:id="@+id/action_edit_mode"
         android:orderInCategory="300"
         android:title="@string/edit_menu"
         android:icon="@android:drawable/ic_menu_edit"
-        app:showAsAction="ifRoom"/>
+        android:color="#FFFFFF"
+        app:showAsAction="ifRoom"/>-->
+
+    <item  android:id="@+id/para_comprar"
+        android:title="Para Comprar"/>
+    <item  android:id="@+id/clear_itens"
+        android:title="Desmarcar Tudo"/>
+    <item  android:id="@+id/edit_itens"
+        android:title="Editar Itens"
+        app:showAsAction="withText"/>
 
 </menu>

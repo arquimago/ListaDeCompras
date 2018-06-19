@@ -7,7 +7,6 @@ import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : AppCompatActivity() {
 
     var isEditing = false
@@ -34,22 +33,38 @@ class MainActivity : AppCompatActivity() {
 
          val id = item.itemId
 
-         if (id == R.id.action_edit_mode) {
-             isEditing = !isEditing
-             val edit = Intent(this,EditActivity::class.java)
-             startActivity(edit)
+         when (id) {
+             R.id.para_comprar -> {
+                 val comprar = Intent(this,ComprarActivity::class.java)
+                 startActivity(comprar)
 
-             return true
+                 return true
+             }
+             R.id.edit_itens -> {
+                 val edit = Intent(this,EditActivity::class.java)
+                 startActivity(edit)
+
+                 return true
+             }
+
+             R.id.clear_itens -> {
+                 val bd = BD(this)
+                 bd.compreiTudo()
+
+                 val clear = Intent(this,MainActivity::class.java)
+
+                 startActivity(clear)
+
+                 return true
+             }
+
+             else -> return super.onOptionsItemSelected(item)
          }
-
-         return super.onOptionsItemSelected(item)
      }
+
 
     override fun onBackPressed() {
         System.exit(0)
         super.onBackPressed()
     }
-
-
-
 }

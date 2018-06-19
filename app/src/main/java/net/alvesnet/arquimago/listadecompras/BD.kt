@@ -19,6 +19,12 @@ class BD(context: Context) {
         item.id = id
     }
 
+    fun inserirCategoria(categoria: String){
+        val valores = ContentValues()
+        valores.put("categoria", categoria)
+        bd.insert("categorias",null,valores)
+    }
+
     fun atualizar(item: ItemDaLista) {
         val valores = ContentValues()
         valores.put("nome", item.nome)
@@ -28,9 +34,14 @@ class BD(context: Context) {
 
     }
 
-
     fun apagar(item: ItemDaLista) {
         bd.delete("itens", "_id = " + item.id, null)
+    }
+
+    fun compreiTudo(){
+        val valores = ContentValues()
+        valores.put("comprar", 1)
+        bd.update("itens",valores,"comprar = 0",null)
     }
 
     fun buscar(): MutableList<ItemDaLista> {
@@ -47,7 +58,7 @@ class BD(context: Context) {
                 i.id = cursor.getInt(0).toLong()
                 i.nome = cursor.getString(1)
                 i.categoria = cursor.getInt(2)
-                i.comprar = cursor.getInt(3) == 1
+                i.comprar = cursor.getInt(3) != 1
                 lista.add(i)
 
             } while (cursor.moveToNext())
@@ -83,7 +94,7 @@ class BD(context: Context) {
         val lista : MutableList<ItemDaLista> = arrayListOf()
         val colunas = arrayOf("_id", "nome", "categoria", "comprar")
 
-        val cursor = bd.query("itens", colunas, "comprar=1", null, null, null, "nome ASC")
+        val cursor = bd.query("itens", colunas, "comprar=0", null, null, null, "nome ASC")
 
         if (cursor.count > 0) {
             cursor.moveToFirst()
@@ -93,7 +104,7 @@ class BD(context: Context) {
                 i.id = cursor.getInt(0).toLong()
                 i.nome = cursor.getString(1)
                 i.categoria = cursor.getInt(2)
-                i.comprar = cursor.getInt(3) != 1
+                i.comprar = true
                 lista.add(i)
 
             } while (cursor.moveToNext())

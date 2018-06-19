@@ -22,8 +22,10 @@
             android:name=".EditActivity"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
-
-
+        <activity
+            android:name=".ComprarActivity"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

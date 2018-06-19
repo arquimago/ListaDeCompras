@@ -6,18 +6,25 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 val nomeBD = "compras"
-val versaoBD = 3
+val versaoBD = 4
 
 class BDCore(context: Context): SQLiteOpenHelper(context, nomeBD, null, versaoBD){
 
     override fun onCreate(bd: SQLiteDatabase) {
-        bd.execSQL("CREATE TABLE itens(_id integer primary key autoincrement, nome text not null, categoria integer not null DEFAULT 0, comprar integer not null DEFAULT 0)")
-        popular(bd)
+        bd.run {
+            execSQL("CREATE TABLE itens(_id integer primary key autoincrement, nome text not null, categoria integer not null DEFAULT 0, comprar integer not null DEFAULT 0)")
+            execSQL("CREATE TABLE categorias(_id integer primary key autoincrement, nomeCategoria not null)")
+        }
+        popularItens(bd)
+        popularCategorias(bd)
     }
 
     override fun onUpgrade(bd: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        bd.execSQL("drop table itens")
-        onCreate(bd)
+        bd.run{
+            execSQL("drop table itens")
+            execSQL("drop table categorias")
+        }
+            onCreate(bd)
     }
 
     private fun inserir(item: ItemDaLista, bd: SQLiteDatabase){
@@ -29,7 +36,16 @@ class BDCore(context: Context): SQLiteOpenHelper(context, nomeBD, null, versaoBD
         bd.insert("itens",null,valores)
     }
 
-    private fun popular(bd: SQLiteDatabase){
+    private fun popularCategorias(bd: SQLiteDatabase){
+        val valores = ContentValues()
+        val tabTitles = arrayOf("Temperos", "Cozinhar", "Café da Manhã", "Diversos", "Feira", "Limpeza", "Higiene", "Bebidas")
+        for(categoria  in tabTitles){
+            valores.put("categoria", categoria)
+            bd.insert("categorias",null,valores)
+        }
+    }
+
+    private fun popularItens(bd: SQLiteDatabase){
         val item = ItemDaLista()
         item.comprar = false
         item.quantidade = 0
