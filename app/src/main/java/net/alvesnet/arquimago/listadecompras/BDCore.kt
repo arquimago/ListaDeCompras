@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 val nomeBD = "compras"
-val versaoBD = 2
+val versaoBD = 3
 
 class BDCore(context: Context): SQLiteOpenHelper(context, nomeBD, null, versaoBD){
 

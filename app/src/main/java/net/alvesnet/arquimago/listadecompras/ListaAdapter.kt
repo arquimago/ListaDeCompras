@@ -24,15 +24,16 @@ class ListaAdapter(private val itens: MutableList<ItemDaLista>, private val isEd
     override fun onBindViewHolder(itemHolder: ItemHolder, position: Int) {
         val item = itens[position]
         itemHolder.checkBox.text = item.nome
+        itemHolder.checkBox.isChecked = item.comprar
         if (isEdting) {
             itemHolder.deleteButton.visibility = View.VISIBLE
             itemHolder.editButton.visibility = View.VISIBLE
-            itemHolder.checkBox.isChecked = false
+            //itemHolder.checkBox.isChecked = false
             itemHolder.checkBox.isEnabled = false
         } else {
             itemHolder.deleteButton.visibility = View.INVISIBLE
             itemHolder.editButton.visibility = View.INVISIBLE
-            itemHolder.checkBox.isChecked = item.comprar
+            //itemHolder.checkBox.isChecked = item.comprar
             itemHolder.checkBox.isEnabled = true
         }
 

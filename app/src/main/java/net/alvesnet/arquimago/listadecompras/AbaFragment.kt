@@ -91,6 +91,11 @@ class AbaFragment : Fragment() {
         savedInstanceState.putInt(ARG_PAGE, categoria)
     }
 
+    override fun onResume() {
+        super.onResume()
+        view?.RV!!.adapter.notifyDataSetChanged()
+    }
+
     companion object {
         const val ARG_PAGE = "ARG_PAGE"
         const val IS_EDITING = "IS_EDITING"

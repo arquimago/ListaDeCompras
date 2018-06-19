@@ -3,4 +3,5 @@
     <string name="generic_item">Nome do Item</string>
     <string name="edit_menu">Editar Listas</string>
     <string name="add_item">Adicionar Item</string>
+    <string name="back_menu">Voltar</string>
 </resources>

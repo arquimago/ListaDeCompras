@@ -6,8 +6,8 @@ import android.util.Log
 
 class BD(context: Context) {
 
-    val auxBd = BDCore(context)
-    var bd = auxBd.getWritableDatabase()
+    private val auxBd = BDCore(context)
+    private var bd = auxBd.writableDatabase
 
     fun inserir(item: ItemDaLista) {
         val valores = ContentValues()
