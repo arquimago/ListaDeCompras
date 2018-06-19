@@ -10,4 +10,5 @@ class AbasAdapter(fm: FragmentManager, private val tabTitles: Array<String>, pri
     override fun getItem(position: Int) = AbaFragment.newInstance(position, isEditing)
 
     override fun getPageTitle(position: Int) = tabTitles[position]
+
 }

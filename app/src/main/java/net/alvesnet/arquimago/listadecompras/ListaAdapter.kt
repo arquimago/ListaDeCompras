@@ -76,9 +76,6 @@ class ListaAdapter(private val itens: MutableList<ItemDaLista>, private val isEd
                     bd.fechar()
                     itens.removeAt(position)
                     notifyItemRemoved(position)
-                    notifyItemRangeChanged(position, itemCount)
-                    //notifyItemRangeRemoved(position,1)
-
                 }
                 alertBuilder.setNegativeButton("NÃO") { _, _ -> }
 

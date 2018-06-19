@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    var isEditing = true
+    var isEditing = false
     private val tabTitles = arrayOf("Temperos", "Cozinhar", "Café da Manhã", "Diversos", "Feira", "Limpeza", "Higiene", "Bebidas")
 
 
@@ -17,13 +17,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //setSupportActionBar(my_toolbar)
         viewpager.adapter = AbasAdapter(supportFragmentManager, tabTitles, isEditing)
 
         sliding_tabs.setupWithViewPager(viewpager)
+
+        setSupportActionBar(my_toolbar)
     }
 
-    /*override fun onCreateOptionsMenu(menu: Menu): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
          menuInflater.inflate(R.menu.menu_settings, menu)
          return true
      }
@@ -41,6 +42,6 @@ class MainActivity : AppCompatActivity() {
          }
 
          return super.onOptionsItemSelected(item)
-     }*/
+     }
 
 }
