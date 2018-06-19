@@ -1,7 +1,7 @@
 package net.alvesnet.arquimago.listadecompras
 
+import android.app.AlertDialog
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
@@ -27,42 +27,50 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-         menuInflater.inflate(R.menu.menu_settings, menu)
-         return true
+        menuInflater.inflate(R.menu.menu_settings, menu)
+        return true
     }
 
-     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-         val id = item.itemId
+        val id = item.itemId
 
-         when (id) {
-             R.id.para_comprar -> {
-                 val comprar = Intent(this,ComprarActivity::class.java)
-                 startActivity(comprar)
+        when (id) {
+            R.id.para_comprar -> {
+                val comprar = Intent(this, ComprarActivity::class.java)
+                startActivity(comprar)
 
-                 return true
-             }
-             R.id.edit_itens -> {
-                 val edit = Intent(this,EditActivity::class.java)
-                 startActivity(edit)
+                return true
+            }
+            R.id.edit_itens -> {
+                val edit = Intent(this, EditActivity::class.java)
+                startActivity(edit)
 
-                 return true
-             }
+                return true
+            }
 
-             R.id.clear_itens -> {
-                 val bd = BD(this)
-                 bd.compreiTudo()
+            R.id.clear_itens -> {
+                val alertBuilder = AlertDialog.Builder(this)
+                alertBuilder.setTitle("Confirmação")
+                alertBuilder.setMessage("Deseja mesmo desmarcar todos os itens?")
+                alertBuilder.setPositiveButton("SIM") { _, _ ->
+                    val bd = BD(this)
+                    bd.compreiTudo()
 
-                 val clear = Intent(this,MainActivity::class.java)
+                    val clear = Intent(this, MainActivity::class.java)
 
-                 startActivity(clear)
+                    startActivity(clear)
+                }
+                alertBuilder.setNegativeButton("NÃO") { _, _ -> }
 
-                 return true
-             }
+                alertBuilder.create().show()
 
-             else -> return super.onOptionsItemSelected(item)
-         }
-     }
+                return true
+            }
+
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
 
 
     override fun onBackPressed() {

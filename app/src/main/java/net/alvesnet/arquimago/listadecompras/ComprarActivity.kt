@@ -1,8 +1,8 @@
 package net.alvesnet.arquimago.listadecompras
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.NavUtils
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
@@ -38,7 +38,7 @@ class ComprarActivity : AppCompatActivity() {
         val id = item.itemId
 
         if (id == R.id.action_revert_edit_mode) {
-            NavUtils.navigateUpTo(this,parentActivityIntent)
+            NavUtils.navigateUpTo(this, parentActivityIntent)
             return true
         }
 
@@ -46,7 +46,7 @@ class ComprarActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        NavUtils.navigateUpTo(this,parentActivityIntent)
+        NavUtils.navigateUpTo(this, parentActivityIntent)
         super.onBackPressed()
     }
 }

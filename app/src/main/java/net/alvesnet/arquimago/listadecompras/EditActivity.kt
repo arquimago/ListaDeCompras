@@ -38,7 +38,7 @@ class EditActivity : AppCompatActivity() {
         val id = item.itemId
 
         if (id == R.id.action_revert_edit_mode) {
-            NavUtils.navigateUpTo(this,parentActivityIntent)
+            NavUtils.navigateUpTo(this, parentActivityIntent)
             return true
         }
 
@@ -46,7 +46,7 @@ class EditActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        NavUtils.navigateUpTo(this,parentActivityIntent)
+        NavUtils.navigateUpTo(this, parentActivityIntent)
         super.onBackPressed()
     }
 

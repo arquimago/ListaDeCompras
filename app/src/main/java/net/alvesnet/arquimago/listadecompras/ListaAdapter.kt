@@ -1,9 +1,6 @@
 package net.alvesnet.arquimago.listadecompras
 
 import android.app.AlertDialog
-import android.graphics.Color
-import android.graphics.PorterDuff
-import android.graphics.drawable.ColorDrawable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +10,6 @@ import android.widget.CompoundButton
 import android.widget.EditText
 import android.widget.ImageButton
 import kotlinx.android.synthetic.main.fragment_item.view.*
-
 
 
 class ListaAdapter(private val itens: MutableList<ItemDaLista>, private val isEdting: Boolean) : RecyclerView.Adapter<ListaAdapter.ItemHolder>() {
@@ -58,7 +54,7 @@ class ListaAdapter(private val itens: MutableList<ItemDaLista>, private val isEd
                 alertBuilder.setTitle("Alterar nome")
                 alertBuilder.setMessage("Digite o novo nome do item: ")
                 val editText = EditText(context)
-                editText.hint = "Novo Nome"
+                editText.hint = item.nome
                 alertBuilder.setView(editText)
 
                 alertBuilder.setPositiveButton("Alterar") { _, _ ->

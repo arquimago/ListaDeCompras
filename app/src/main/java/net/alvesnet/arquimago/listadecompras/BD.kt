@@ -2,7 +2,6 @@ package net.alvesnet.arquimago.listadecompras
 
 import android.content.ContentValues
 import android.content.Context
-import android.util.Log
 
 class BD(context: Context) {
 
@@ -19,10 +18,10 @@ class BD(context: Context) {
         item.id = id
     }
 
-    fun inserirCategoria(categoria: String){
+    fun inserirCategoria(categoria: String) {
         val valores = ContentValues()
         valores.put("categoria", categoria)
-        bd.insert("categorias",null,valores)
+        bd.insert("categorias", null, valores)
     }
 
     fun atualizar(item: ItemDaLista) {
@@ -38,10 +37,10 @@ class BD(context: Context) {
         bd.delete("itens", "_id = " + item.id, null)
     }
 
-    fun compreiTudo(){
+    fun compreiTudo() {
         val valores = ContentValues()
         valores.put("comprar", 1)
-        bd.update("itens",valores,"comprar = 0",null)
+        bd.update("itens", valores, "comprar = 0", null)
     }
 
     fun buscar(): MutableList<ItemDaLista> {
@@ -68,7 +67,7 @@ class BD(context: Context) {
     }
 
     fun buscarCategoria(categoria: Int): MutableList<ItemDaLista> {
-        val lista : MutableList<ItemDaLista> = arrayListOf()
+        val lista: MutableList<ItemDaLista> = arrayListOf()
         val colunas = arrayOf("_id", "nome", "categoria", "comprar")
 
         val cursor = bd.query("itens", colunas, "categoria =$categoria", null, null, null, "nome ASC")
@@ -91,7 +90,7 @@ class BD(context: Context) {
     }
 
     fun paraComprar(): MutableList<ItemDaLista> {
-        val lista : MutableList<ItemDaLista> = arrayListOf()
+        val lista: MutableList<ItemDaLista> = arrayListOf()
         val colunas = arrayOf("_id", "nome", "categoria", "comprar")
 
         val cursor = bd.query("itens", colunas, "comprar=0", null, null, null, "nome ASC")
