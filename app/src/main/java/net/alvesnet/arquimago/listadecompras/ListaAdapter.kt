@@ -12,10 +12,12 @@ import android.widget.ImageButton
 import kotlinx.android.synthetic.main.fragment_item.view.*
 
 
+
 class ListaAdapter(private val itens: MutableList<ItemDaLista>, private val isEdting: Boolean) : RecyclerView.Adapter<ListaAdapter.ItemHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_item, parent, false)
+
         return ItemHolder(view)
     }
 

@@ -2,14 +2,14 @@ package net.alvesnet.arquimago.listadecompras
 
 import android.content.ContentValues
 import android.content.Context
-import android.database.sqlite.SQLiteDatabase
+import android.util.Log
 
 class BD(context: Context) {
 
     val auxBd = BDCore(context)
     var bd = auxBd.getWritableDatabase()
 
-    fun inserir(item: ItemDaLista, bd: SQLiteDatabase) {
+    fun inserir(item: ItemDaLista) {
         val valores = ContentValues()
         valores.put("nome", item.nome)
         valores.put("categoria", item.categoria)
