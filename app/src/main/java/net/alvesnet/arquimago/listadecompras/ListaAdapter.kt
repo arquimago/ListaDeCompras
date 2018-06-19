@@ -1,6 +1,9 @@
 package net.alvesnet.arquimago.listadecompras
 
 import android.app.AlertDialog
+import android.graphics.Color
+import android.graphics.PorterDuff
+import android.graphics.drawable.ColorDrawable
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -17,12 +20,16 @@ class ListaAdapter(private val itens: MutableList<ItemDaLista>, private val isEd
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_item, parent, false)
-
         return ItemHolder(view)
     }
 
     override fun onBindViewHolder(itemHolder: ItemHolder, position: Int) {
         val item = itens[position]
+        if(position%2!=0){
+            itemHolder.view.setBackgroundColor(0x9e9e9e) //= cinza
+            itemHolder.editButton.setBackgroundColor(0x9e9e9e)
+            itemHolder.deleteButton.setBackgroundColor(0x9e9e9e)
+        }
         itemHolder.checkBox.text = item.nome
         itemHolder.checkBox.isChecked = item.comprar
         if (isEdting) {

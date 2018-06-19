@@ -40,7 +40,7 @@ class BDCore(context: Context): SQLiteOpenHelper(context, nomeBD, null, versaoBD
         val valores = ContentValues()
         val tabTitles = arrayOf("Temperos", "Cozinhar", "Café da Manhã", "Diversos", "Feira", "Limpeza", "Higiene", "Bebidas")
         for(categoria  in tabTitles){
-            valores.put("categoria", categoria)
+            valores.put("nomeCategoria", categoria)
             bd.insert("categorias",null,valores)
         }
     }
