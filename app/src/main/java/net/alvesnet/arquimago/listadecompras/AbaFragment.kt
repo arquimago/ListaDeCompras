@@ -9,6 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import kotlinx.android.synthetic.main.fragment_page.view.*
+import android.support.v7.widget.DividerItemDecoration
+
+
 
 
 class AbaFragment : Fragment() {
@@ -35,13 +38,17 @@ class AbaFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_page, container, false)
 
-        val bd = BD(context!!)
+        val bd = BD(view.context)
         val lista = bd.buscarCategoria(categoria)
         bd.fechar()
 
         var rv = view.RV
         rv.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         rv.adapter = ListaAdapter(lista, isEditing)
+
+
+        val itemDecor = DividerItemDecoration(context,1 )
+        rv.addItemDecoration(itemDecor)
 
         if (isEditing) {
             view.textAddItem.visibility = View.VISIBLE

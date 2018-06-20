@@ -21,22 +21,15 @@ class ListaAdapter(private val itens: MutableList<ItemDaLista>, private val isEd
 
     override fun onBindViewHolder(itemHolder: ItemHolder, position: Int) {
         val item = itens[position]
-        if(position%2!=0){
-            itemHolder.view.setBackgroundColor(0x9e9e9e) //= cinza
-            itemHolder.editButton.setBackgroundColor(0x9e9e9e)
-            itemHolder.deleteButton.setBackgroundColor(0x9e9e9e)
-        }
         itemHolder.checkBox.text = item.nome
         itemHolder.checkBox.isChecked = item.comprar
         if (isEdting) {
             itemHolder.deleteButton.visibility = View.VISIBLE
             itemHolder.editButton.visibility = View.VISIBLE
-            //itemHolder.checkBox.isChecked = false
             itemHolder.checkBox.isEnabled = false
         } else {
             itemHolder.deleteButton.visibility = View.INVISIBLE
             itemHolder.editButton.visibility = View.INVISIBLE
-            //itemHolder.checkBox.isChecked = item.comprar
             itemHolder.checkBox.isEnabled = true
         }
 

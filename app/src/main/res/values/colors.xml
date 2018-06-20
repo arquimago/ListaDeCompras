@@ -5,7 +5,7 @@
     <color name="colorAccent">#f57f17</color>
     <color name="abaSelecionada">#dd2c00</color>
     <color name="textoSelecionado">#f57f17</color>
-    <color name="gray">#EEEEEE</color>
+    <color name="grey">#EEEEEE</color>
     <color name="white">#FFFFFF</color>
 
 </resources>
