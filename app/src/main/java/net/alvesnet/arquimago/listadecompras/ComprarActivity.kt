@@ -19,9 +19,10 @@ class ComprarActivity : AppCompatActivity() {
         bd.fechar()
 
         var rv = RV
-        rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        rv.adapter = ListaAdapter(lista, false)
 
+        rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+        rv.adapter = ListaAdapter(lista, false)
 
         setSupportActionBar(my_toolbar)
 
