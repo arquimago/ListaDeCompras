@@ -33,7 +33,7 @@ class EditActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         val id = item.itemId
 
@@ -43,7 +43,7 @@ class EditActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
-    }
+    }*/
 
     override fun onBackPressed() {
         NavUtils.navigateUpTo(this, parentActivityIntent)

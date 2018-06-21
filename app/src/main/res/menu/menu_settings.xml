@@ -14,7 +14,7 @@
 
     <item
         android:id="@+id/para_comprar"
-        android:title="Para Comprar" />
+        android:title="Ver Marcados" />
     <item
         android:id="@+id/clear_itens"
         android:title="Desmarcar Tudo" />

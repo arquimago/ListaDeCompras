@@ -4,12 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".EditActivity">
 
-    <item
+    <!--<item
         android:id="@+id/action_revert_edit_mode"
         android:icon="@android:drawable/ic_menu_revert"
-        android:iconTint="@color/white"
         android:orderInCategory="300"
         android:title="@string/back_menu"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom" />-->
 
 </menu>

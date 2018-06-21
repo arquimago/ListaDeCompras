@@ -34,7 +34,7 @@ class ComprarActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         val id = item.itemId
 
@@ -44,7 +44,7 @@ class ComprarActivity : AppCompatActivity() {
         }
 
         return super.onOptionsItemSelected(item)
-    }
+    }*/
 
     override fun onBackPressed() {
         NavUtils.navigateUpTo(this, parentActivityIntent)
