@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         val id = item.itemId
 
         when (id) {
-            R.id.para_comprar -> {
+            R.id.only_checked -> {
                 val comprar = Intent(this, ComprarActivity::class.java)
                 startActivity(comprar)
 

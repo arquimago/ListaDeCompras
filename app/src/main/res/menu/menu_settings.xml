@@ -13,14 +13,14 @@
         app:showAsAction="ifRoom"/>-->
 
     <item
-        android:id="@+id/para_comprar"
-        android:title="Ver Marcados" />
+        android:id="@+id/only_checked"
+        android:title="@string/oly_checked" />
     <item
         android:id="@+id/clear_itens"
-        android:title="Desmarcar Tudo" />
+        android:title="@string/clear_itens" />
     <item
         android:id="@+id/edit_itens"
-        android:title="Editar Itens"
+        android:title="@string/edit_itens"
         app:showAsAction="withText" />
 
 </menu>

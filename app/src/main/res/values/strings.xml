@@ -4,4 +4,7 @@
     <string name="edit_menu">Editar Listas</string>
     <string name="add_item">Adicionar Item</string>
     <string name="back_menu">Voltar</string>
+    <string name="oly_checked">Ver Marcados</string>
+    <string name="clear_itens">Desmarcar Tudo</string>
+    <string name="edit_itens">Editar Itens</string>
 </resources>
