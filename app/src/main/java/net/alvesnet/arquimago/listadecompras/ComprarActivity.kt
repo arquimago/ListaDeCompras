@@ -3,6 +3,7 @@ package net.alvesnet.arquimago.listadecompras
 import android.os.Bundle
 import android.support.v4.app.NavUtils
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
@@ -23,6 +24,9 @@ class ComprarActivity : AppCompatActivity() {
         rv.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         rv.adapter = ListaAdapter(lista, false)
+
+        val itemDecor = DividerItemDecoration(this,1 )
+        rv.addItemDecoration(itemDecor)
 
         setSupportActionBar(my_toolbar)
 
